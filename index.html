@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literature Detective</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #f59e0b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --correct: #10b981;
+      --wrong: #ef4444;
+    }
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .container { max-width: 500px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 16px; }
+    h1 { color: var(--accent); margin: 0; font-size: 20px; }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      background: #334155;
+      padding: 3px 8px;
+      border-radius: 10px;
+      margin-top: 5px;
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      border: 1px solid #334155;
+    }
+    .clue-box {
+      margin: 8px 0;
+      padding: 8px 12px;
+      background: #0f172a;
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      margin: 6px 0;
+      background: #334155;
+      color: var(--text);
+      border: 1px solid #475569;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .btn.correct { background: var(--correct); border-color: var(--correct); color: #fff; }
+    .btn.wrong { background: var(--wrong); border-color: var(--wrong); color: #fff; }
+    .action-btn {
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      border: none;
+    }
+    .forensic {
+      margin-top: 10px;
+      padding: 10px;
+      background: #092c1e;
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.4;
+      border: 1px solid var(--correct);
+    }
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🕵️ LITERATURE DETECTIVE</h1>
+      <div class="badge" id="case-category">Loading database...</div>
+    </header>
+
+    <div class="stats">
+      <span>Case <strong id="case-num" style="color:var(--text)">0</strong> of <span id="total-cases">0</span></span>
+      <span>Score: <strong id="score" style="color:var(--accent)">0</strong></span>
+    </div>
+
+    <div class="card" id="case-card">
+      <h3 id="case-title" style="margin:0 0 10px 0; font-size:16px;">Opening file...</h3>
+      <div id="clues-container"></div>
+      <button class="btn action-btn" id="clue-btn" onclick="revealNextClue()">🔍 Reveal Clue (<span id="clue-count">1</span>/3)</button>
+    </div>
+
+    <div class="card">
+      <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">SELECT SUSPECT / ANSWER:</div>
+      <div id="options-container"></div>
+      <div id="forensic-box" class="forensic" style="display:none;"></div>
+      <button class="btn action-btn" id="next-btn" style="display:none;" onclick="nextCase()">Next Case ➔</button>
+    </div>
+  </div>
+
+  <script>
+    let cases = [];
+    let currentIdx = 0;
+    let revealedClues = 0;
+    let score = 0;
+    let answered = false;
+
+    fetch('cases.json')
+      .then(res => res.json())
+      .then(data => {
+        cases = data;
+        document.getElementById('total-cases').innerText = cases.length;
+        loadCase();
+      })
+      .catch(err => {
+        document.getElementById('case-title').innerText = "Error loading cases.json";
+      });
+
+    function loadCase() {
+      if (!cases.length) return;
+      answered = false;
+      revealedClues = 0;
+      const c = cases[currentIdx];
+      document.getElementById('case-num').innerText = currentIdx + 1;
+      document.getElementById('case-title').innerText = c.title;
+      document.getElementById('case-category').innerText = c.category;
+      document.getElementById('clues-container').innerHTML = '';
+      document.getElementById('forensic-box').style.display = 'none';
+      document.getElementById('next-btn').style.display = 'none';
+      document.getElementById('clue-btn').style.display = 'block';
+
+      revealNextClue();
+
+      const optContainer = document.getElementById('options-container');
+      optContainer.innerHTML = '';
+      c.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.innerText = opt;
+        btn.onclick = () => solveCase(idx, btn);
+        optContainer.appendChild(btn);
+      });
+    }
+
+    function revealNextClue() {
+      const c = cases[currentIdx];
+      if (revealedClues < c.clues.length) {
+        const div = document.createElement('div');
+        div.className = 'clue-box';
+        div.innerHTML = `<strong>Clue ${revealedClues + 1}:</strong> ${c.clues[revealedClues]}`;
+        document.getElementById('clues-container').appendChild(div);
+        revealedClues++;
+        document.getElementById('clue-count').innerText = revealedClues;
+      }
+      if (revealedClues >= c.clues.length) {
+        document.getElementById('clue-btn').style.display = 'none';
+      }
+    }
+
+    function solveCase(chosenIdx, btn) {
+      if (answered) return;
+      answered = true;
+      const c = cases[currentIdx];
+      const buttons = document.querySelectorAll('#options-container .btn');
+
+      if (chosenIdx === c.answer) {
+        btn.classList.add('correct');
+        score += Math.max(10, 30 - (revealedClues - 1) * 10);
+        document.getElementById('score').innerText = score;
+      } else {
+        btn.classList.add('wrong');
+        buttons[c.answer].classList.add('correct');
+      }
+
+      const fBox = document.getElementById('forensic-box');
+      fBox.style.display = 'block';
+      fBox.innerHTML = `<strong>Deduction:</strong> ${c.forensics}`;
+      document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextCase() {
+      currentIdx = (currentIdx + 1) % cases.length;
+      loadCase();
+    }
+  </script>
+</body>
+</html>
+
