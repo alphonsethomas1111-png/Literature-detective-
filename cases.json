@@ -1,0 +1,122 @@
+[
+  {
+    "title": "The Personification of Charity",
+    "category": "Dec 2004 - British Poetry",
+    "clues": [
+      "14th-century Middle English allegorical narrative poem by William Langland.",
+      "Composed in unrhymed alliterative verse.",
+      "The protagonist appears finally in the likeness of a biblical figure."
+    ],
+    "options": ["Charity", "The Holy Trinity", "Jesus", "The Good Samaritan"],
+    "answer": 3,
+    "forensics": "In Langland's Piers Plowman (1370–90), Piers appears finally as The Good Samaritan (or Jesus)."
+  },
+  {
+    "title": "The Tabard Inn Agreement",
+    "category": "Dec 2004 - British Poetry",
+    "clues": [
+      "Middle English collection of 24 stories spanning over 17,000 lines.",
+      "The Host Harry Bailly proposes a storytelling competition on the pilgrimage to Canterbury.",
+      "The total number of tales agreed per pilgrim."
+    ],
+    "options": ["One story", "Two stories", "Three stories", "Four stories"],
+    "answer": 3,
+    "forensics": "The host suggested each pilgrim tell four stories in all (two on the way to Canterbury and two on the return journey)."
+  },
+  {
+    "title": "The Ovidian Narrative",
+    "category": "Dec 2004 - Renaissance Poetry",
+    "clues": [
+      "A long narrative poem published in 1592–1593.",
+      "Plot is based on passages from Ovid's Metamorphoses.",
+      "Focuses on unrequited love, desire, and mortality."
+    ],
+    "options": ["Shakespeare", "Marlowe", "Drayton", "Sydney"],
+    "answer": 0,
+    "forensics": "Venus and Adonis is a narrative poem by William Shakespeare written in 1592-1593."
+  },
+  {
+    "title": "The Quarto Collection of 1609",
+    "category": "Dec 2004 - Renaissance Poetry",
+    "clues": [
+      "Written primarily in iambic pentameter with rhyme scheme ABAB CDCD EFEF GG.",
+      "126 are addressed to a Fair Youth, and 28 to a Dark Lady.",
+      "Identify the total number of sonnets published in this sequence."
+    ],
+    "options": ["123", "142", "104", "154"],
+    "answer": 3,
+    "forensics": "Shakespeare published a sequence of 154 sonnets covering themes of time, love, and beauty."
+  },
+  {
+    "title": "The Maltese Machiavel",
+    "category": "Dec 2004 - British Drama",
+    "clues": [
+      "Written by Christopher Marlowe in 1589 or 1590.",
+      "Set against a conflict between Spain and the Ottoman Empire.",
+      "The prologue is spoken by the ghost of Machiavelli himself."
+    ],
+    "options": ["Tamburlaine Part I", "Dr. Faustus", "Jew of Malta", "Edward II"],
+    "answer": 2,
+    "forensics": "Barabas in Marlowe's 'The Jew of Malta' is explicitly identified as 'a sound Machiavil'."
+  },
+  {
+    "title": "The Mock-Heroic Royalist",
+    "category": "Dec 2004 - 17th Century Poetry",
+    "clues": [
+      "A 17th-century English mock-heroic narrative poem.",
+      "Written in iambic tetrameter couplets with feminine rhymes.",
+      "Satirizes religious factions and Puritan hypocrisy after Don Quixote."
+    ],
+    "options": ["Religio Laici", "David Simple", "Hudibras", "Journal of the Plague Year"],
+    "answer": 2,
+    "forensics": "Hudibras is an English mock-heroic narrative poem written by Samuel Butler."
+  },
+  {
+    "title": "The Melancholy Octosyllables",
+    "category": "Dec 2004 - Milton Studies",
+    "clues": [
+      "Published in the 1645 Poems collection by Humphrey Moseley.",
+      "Companion piece to 'L'Allegro'.",
+      "Celebrates the contemplative life in octosyllabic couplets."
+    ],
+    "options": ["Il Penseroso", "On His Blindness", "On the Late Massacre in Piedmont", "Lycidas"],
+    "answer": 0,
+    "forensics": "John Milton wrote 'Il Penseroso' in octosyllabic couplets as a reflection on poetic melancholy."
+  },
+  {
+    "title": "The Restoration Sequel Scandal",
+    "category": "Dec 2004 - Restoration Drama",
+    "clues": [
+      "A 1696 Restoration comedy subtitled 'Virtue in Danger'.",
+      "Written as a direct sequel to Colley Cibber's 'Love's Last Shift'.",
+      "Authored by an architect-playwright, not William Congreve."
+    ],
+    "options": ["The Way of the World", "The Old Bachelor", "Love for Love", "The Relapse"],
+    "answer": 3,
+    "forensics": "'The Relapse' was written by Sir John Vanbrugh, while the other three plays are by William Congreve."
+  },
+  {
+    "title": "The Roman World Well Lost",
+    "category": "Dec 2004 - Restoration Drama",
+    "clues": [
+      "Heroic drama in blank verse written in 1677.",
+      "Strictly observes the classical unities of time, place, and action.",
+      "John Dryden's acknowledged adaptation of Shakespeare's Roman play."
+    ],
+    "options": ["Philaster", "Romeo and Juliet", "Antony and Cleopatra", "Edward II"],
+    "answer": 2,
+    "forensics": "Dryden's 'All for Love' (1677) is an adaptation of Shakespeare's 'Antony and Cleopatra'."
+  },
+  {
+    "title": "The Sovereign Sea Monster",
+    "category": "Dec 2004 - Political Prose",
+    "clues": [
+      "Published in 1651 during the English Civil War.",
+      "Advocates for a strong sovereign authority to avoid a state of nature that is 'solitary, poor, nasty, brutish, and short'.",
+      "Written by Thomas Hobbes."
+    ],
+    "options": ["Principia", "Leviathan", "Anatomy of Melancholy", "Liberty of Prophesying"],
+    "answer": 1,
+    "forensics": "Thomas Hobbes published 'Leviathan' in 1651 propounding social contract theory."
+  }
+]
